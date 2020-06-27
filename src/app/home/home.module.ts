@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import { AnalogControllerModule } from 'analog-controller';
+import { BtnToogleComponent } from './btn-toogle/btn-toogle.component';
 
 @NgModule({
   imports: [
@@ -14,6 +15,9 @@ import { AnalogControllerModule } from 'analog-controller';
     HomePageRoutingModule,
     AnalogControllerModule
   ],
-  declarations: [HomePage]
+  declarations: [
+    HomePage,
+    BtnToogleComponent
+  ]
 })
 export class HomePageModule {}

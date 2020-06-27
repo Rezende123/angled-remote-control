@@ -8,9 +8,16 @@
 
 <ion-content [fullscreen]="true">
   <div class="container">
-    <analog-controller [(ngModel)]="angle"></analog-controller>
-    <h2>
-      {{angle || 'Soltou o controle'}}
-    </h2>
+    <app-btn-toogle
+      [(ngModel)]="isGyroControl"
+      [label]="'Habilitar controle por giroscópio?'">
+    </app-btn-toogle>
+
+    <div class="control">
+      <analog-controller [(ngModel)]="angle"></analog-controller>
+      <h2>
+        {{angle || 'Soltou o controle'}}
+      </h2>
+    </div>
   </div>
 </ion-content>

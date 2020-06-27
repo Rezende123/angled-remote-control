@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class HomePage {
 
   angle: number;
+  isGyroControl: boolean;
 
   constructor() {}
 
