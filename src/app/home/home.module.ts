@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import { AnalogControllerModule } from 'analog-controller';
-import { BtnToogleComponent } from './btn-toogle/btn-toogle.component';
+import { BtnToogleComponent } from './components/btn-toogle/btn-toogle.component';
 
 @NgModule({
   imports: [
