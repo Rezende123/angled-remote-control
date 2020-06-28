@@ -6,6 +6,7 @@ import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import { AnalogControllerModule } from 'analog-controller';
 import { BtnToogleComponent } from './components/btn-toogle/btn-toogle.component';
+import { Gyroscope } from '@ionic-native/gyroscope/ngx';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { BtnToogleComponent } from './components/btn-toogle/btn-toogle.component
   declarations: [
     HomePage,
     BtnToogleComponent
-  ]
+  ],
+  providers: [Gyroscope]
 })
 export class HomePageModule {}

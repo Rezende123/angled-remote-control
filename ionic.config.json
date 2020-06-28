@@ -1,7 +1,8 @@
 {
   "name": "angled-remote-control",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }
