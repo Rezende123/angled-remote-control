@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Gyroscope, GyroscopeOrientation, GyroscopeOptions } from '@ionic-native/gyroscope/ngx';
+import { Gyroscope, GyroscopeOptions } from '@ionic-native/gyroscope/ngx';
 import { ConvertOrientationAngleService } from './services/convert-orientation-angle.service';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
 @Component({
   selector: 'app-home',
@@ -14,10 +15,13 @@ export class HomePage implements OnInit {
 
   constructor(
     private gyroscope: Gyroscope,
-    private orientationAngleService: ConvertOrientationAngleService
+    private orientationAngleService: ConvertOrientationAngleService,
+    private screenOrientation: ScreenOrientation
   ) { }
 
   ngOnInit(): void {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+
     this.configureGyroscope();
     this.orientationAngleService
       .angle.subscribe(angle => this.setAngleByGyro(angle));

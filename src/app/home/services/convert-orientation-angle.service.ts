@@ -17,22 +17,27 @@ export class ConvertOrientationAngleService {
 
   constructor() { }
 
+  private scale(yMin, yMax, xMin, xMax, input) {
+    const percent = (input - yMin) / (yMax - yMin);
+    const output = percent * (xMax - xMin) + xMin;
+    return output;
+  }
+
   convert(orientation: GyroscopeOrientation) {
-    if (!orientation) {
+    if (!orientation || (orientation.x === 0 && orientation.y === 0)) {
+      this.angle = null;
       return;
     }
 
-    if (orientation.y > 0) {
-      this.angle = 1;
-    } else
-    if (orientation.y < 0) {
-      this.angle = 180;
-    } else
+    const setAngleByScale = (min, max) => {
+      const angle = this.scale(0, 1, min, max, orientation.y);
+      this.angle = Math.floor(angle);
+    };
+
     if (orientation.x > 0) {
-      this.angle = 90;
-    } else
-    if (orientation.x < 0) {
-      this.angle = 270;
+      setAngleByScale(1, 180);
+    } else {
+      setAngleByScale(181, 360);
     }
   }
 }
