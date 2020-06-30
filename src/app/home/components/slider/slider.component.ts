@@ -18,8 +18,8 @@ export class SliderComponent implements ControlValueAccessor {
   label: string;
 
   options: Options = {
-    floor: 0,
-    ceil: 100
+    floor: -50,
+    ceil: 50
   };
 
   _value: number;

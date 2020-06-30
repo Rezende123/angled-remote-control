@@ -14,6 +14,14 @@ export class ConvertOrientationService {
     return this._angle;
   }
 
+  private _velocity = new Subject<number>();
+  set velocity(velocity: any) {
+    this._velocity.next(velocity);
+  }
+  get velocity() {
+    return this._velocity;
+  }
+
   constructor() { }
 
   convert(orientation: DeviceMotionAccelerationData) {
@@ -29,8 +37,11 @@ export class ConvertOrientationService {
       return output;
     };
     const angleByAxis = axis => Math.round(scale(-10, 10, 1, 180, axis));
+    const velocityByAxis = axis => Math.round(scale(-10, 10, -50, 50, axis));
 
+    this.velocity = velocityByAxis(y);
     const angle = angleByAxis(x);
+
     if (!angle) {
       return;
     } else

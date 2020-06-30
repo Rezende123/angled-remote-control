@@ -24,13 +24,23 @@ export class HomePage implements OnInit {
     this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
 
     this.configureGyroscope();
+
     this.orientationService
       .angle.subscribe(angle => this.setAngleByGyro(angle));
+
+    this.orientationService
+      .velocity.subscribe(velocity => this.setVelocityByGyro(velocity));
   }
 
-  private setAngleByGyro(angle: any) {
+  private setAngleByGyro(angle: number) {
     if (this.isGyroControl) {
       this.angle = angle;
+    }
+  }
+
+  private setVelocityByGyro(velocity: number) {
+    if (this.isGyroControl) {
+      this.velocity = velocity;
     }
   }
 
