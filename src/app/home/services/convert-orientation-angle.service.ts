@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { GyroscopeOrientation } from '@ionic-native/gyroscope/ngx';
 import { Subject } from 'rxjs';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -17,27 +16,28 @@ export class ConvertOrientationAngleService {
 
   constructor() { }
 
-  private scale(yMin, yMax, xMin, xMax, input) {
-    const percent = (input - yMin) / (yMax - yMin);
-    const output = percent * (xMax - xMin) + xMin;
-    return output;
-  }
-
   convert(orientation: GyroscopeOrientation) {
-    if (!orientation || (orientation.x === 0 && orientation.y === 0)) {
+    if (!orientation) {
       this.angle = null;
       return;
     }
 
-    const setAngleByScale = (min, max) => {
-      const angle = this.scale(0, 1, min, max, orientation.y);
-      this.angle = Math.floor(angle);
+    const { x, y } = orientation;
+    const scale = (yMin, yMax, xMin, xMax, input) => {
+      const percent = (input - yMin) / (yMax - yMin);
+      const output = percent * (xMax - xMin) + xMin;
+      return output;
     };
+    const angleByAxis = axis => scale(-.08, .08, 1, 180, axis);
 
-    if (orientation.x > 0) {
-      setAngleByScale(1, 180);
+    const angle = angleByAxis(y);
+    if (!angle) {
+      return;
+    } else
+    if (x > -.01) {
+      this.angle = angle;
     } else {
-      setAngleByScale(181, 360);
+      this.angle = scale(1, 180, 360, 181, angle);
     }
   }
 }
