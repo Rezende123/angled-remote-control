@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ConvertOrientationService } from './services/convert-orientation.service';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { DeviceMotion, DeviceMotionAccelerometerOptions } from '@ionic-native/device-motion/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 @Component({
   selector: 'app-home',
@@ -11,17 +12,19 @@ import { DeviceMotion, DeviceMotionAccelerometerOptions } from '@ionic-native/de
 export class HomePage implements OnInit {
 
   angle: number;
-  velocity = 50;
+  velocity = 25;
   isGyroControl: boolean;
 
   constructor(
     private deviceMotion: DeviceMotion,
     private orientationService: ConvertOrientationService,
-    private screenOrientation: ScreenOrientation
+    private screenOrientation: ScreenOrientation,
+    private statusBar: StatusBar
   ) { }
 
   ngOnInit(): void {
     this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+    this.statusBar.backgroundColorByHexString('#ecf0f3');
 
     this.configureGyroscope();
 
