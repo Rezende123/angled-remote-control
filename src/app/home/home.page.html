@@ -10,14 +10,11 @@
   <div class="container">
     <app-btn-toogle
       [(ngModel)]="isGyroControl"
-      [label]="'Habilitar controle por giroscópio?'">
+      [label]="'Habilitar giroscópio'">
     </app-btn-toogle>
 
     <div class="control">
       <analog-controller [(ngModel)]="angle"></analog-controller>
-      <p>
-        {{angle || 'Soltou o controle'}}
-      </p>
     </div>
 
     <app-slider label="Velocidade" ></app-slider>
