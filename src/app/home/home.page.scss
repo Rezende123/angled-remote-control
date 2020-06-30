@@ -9,12 +9,16 @@ ion-header, ion-content {
   align-items: center;
 
   overflow: hidden;
-  height: 80%;
+  height: 90%;
+  padding: 20px;
   margin: 20px;
 }
 
 .container > h2 {
     text-align: center;
+}
+.container  p {
+  margin-bottom: 0px;
 }
 
 .control {

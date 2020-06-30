@@ -31,6 +31,7 @@
     "cordova-plugin-device-motion": "^2.0.1",
     "cordova-plugin-screen-orientation": "^3.0.2",
     "es6-promise-plugin": "^4.2.2",
+    "ng5-slider": "^1.2.4",
     "rxjs": "~6.5.1",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

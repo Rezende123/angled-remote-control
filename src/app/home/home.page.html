@@ -15,9 +15,11 @@
 
     <div class="control">
       <analog-controller [(ngModel)]="angle"></analog-controller>
-      <h2>
+      <p>
         {{angle || 'Soltou o controle'}}
-      </h2>
+      </p>
     </div>
+
+    <app-slider label="Velocidade" ></app-slider>
   </div>
 </ion-content>

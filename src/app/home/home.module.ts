@@ -8,6 +8,8 @@ import { AnalogControllerModule } from 'analog-controller';
 import { BtnToogleComponent } from './components/btn-toogle/btn-toogle.component';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { DeviceMotion } from '@ionic-native/device-motion/ngx';
+import { SliderComponent } from './components/slider/slider.component';
+import { Ng5SliderModule } from 'ng5-slider';
 
 @NgModule({
   imports: [
@@ -15,11 +17,13 @@ import { DeviceMotion } from '@ionic-native/device-motion/ngx';
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    AnalogControllerModule
+    AnalogControllerModule,
+    Ng5SliderModule
   ],
   declarations: [
     HomePage,
-    BtnToogleComponent
+    BtnToogleComponent,
+    SliderComponent
   ],
   providers: [DeviceMotion, ScreenOrientation]
 })
