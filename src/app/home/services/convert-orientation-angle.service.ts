@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { GyroscopeOrientation } from '@ionic-native/gyroscope/ngx';
+import { DeviceMotionAccelerationData } from '@ionic-native/device-motion/ngx';
 import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class ConvertOrientationAngleService {
 
   constructor() { }
 
-  convert(orientation: GyroscopeOrientation) {
+  convert(orientation: DeviceMotionAccelerationData) {
     if (!orientation) {
       this.angle = null;
       return;
@@ -28,13 +28,13 @@ export class ConvertOrientationAngleService {
       const output = percent * (xMax - xMin) + xMin;
       return output;
     };
-    const angleByAxis = axis => scale(-.08, .08, 1, 180, axis);
+    const angleByAxis = axis => Math.round(scale(-10, 10, 1, 180, axis));
 
-    const angle = angleByAxis(y);
+    const angle = angleByAxis(x);
     if (!angle) {
       return;
     } else
-    if (x > -.01) {
+    if (y > 0) {
       this.angle = angle;
     } else {
       this.angle = scale(1, 180, 360, 181, angle);

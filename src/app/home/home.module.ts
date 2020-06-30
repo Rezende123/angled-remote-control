@@ -6,8 +6,8 @@ import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import { AnalogControllerModule } from 'analog-controller';
 import { BtnToogleComponent } from './components/btn-toogle/btn-toogle.component';
-import { Gyroscope } from '@ionic-native/gyroscope/ngx';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+import { DeviceMotion } from '@ionic-native/device-motion/ngx';
 
 @NgModule({
   imports: [
@@ -21,6 +21,6 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
     HomePage,
     BtnToogleComponent
   ],
-  providers: [Gyroscope, ScreenOrientation]
+  providers: [DeviceMotion, ScreenOrientation]
 })
 export class HomePageModule {}

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Gyroscope, GyroscopeOptions } from '@ionic-native/gyroscope/ngx';
 import { ConvertOrientationAngleService } from './services/convert-orientation-angle.service';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+import { DeviceMotion, DeviceMotionAccelerometerOptions } from '@ionic-native/device-motion/ngx';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +14,7 @@ export class HomePage implements OnInit {
   isGyroControl: boolean;
 
   constructor(
-    private gyroscope: Gyroscope,
+    private deviceMotion: DeviceMotion,
     private orientationAngleService: ConvertOrientationAngleService,
     private screenOrientation: ScreenOrientation
   ) { }
@@ -34,10 +34,10 @@ export class HomePage implements OnInit {
   }
 
   private configureGyroscope() {
-    const options: GyroscopeOptions = {
+    const options: DeviceMotionAccelerometerOptions = {
       frequency: 1000
     };
-    this.gyroscope.watch(options)
+    this.deviceMotion.watchAcceleration(options)
       .subscribe(orientation => this.orientationAngleService.convert(orientation));
   }
 }
