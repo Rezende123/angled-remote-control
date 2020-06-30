@@ -4,7 +4,7 @@ import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ConvertOrientationAngleService {
+export class ConvertOrientationService {
 
   private _angle = new Subject<number>();
   set angle(angle: any) {

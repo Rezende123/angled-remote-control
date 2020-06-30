@@ -1,16 +1,16 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from '@angular/core/testing';
-import { ConvertOrientationAngleService } from './convert-orientation-angle.service';
+import { ConvertOrientationService } from './convert-orientation.service';
 
 describe('Service: ConvertOrientationAngle', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ConvertOrientationAngleService]
+      providers: [ConvertOrientationService]
     });
   });
 
-  it('should ...', inject([ConvertOrientationAngleService], (service: ConvertOrientationAngleService) => {
+  it('should ...', inject([ConvertOrientationService], (service: ConvertOrientationService) => {
     expect(service).toBeTruthy();
   }));
 });

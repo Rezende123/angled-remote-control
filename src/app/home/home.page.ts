@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ConvertOrientationAngleService } from './services/convert-orientation-angle.service';
+import { ConvertOrientationService } from './services/convert-orientation.service';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { DeviceMotion, DeviceMotionAccelerometerOptions } from '@ionic-native/device-motion/ngx';
 
@@ -16,7 +16,7 @@ export class HomePage implements OnInit {
 
   constructor(
     private deviceMotion: DeviceMotion,
-    private orientationAngleService: ConvertOrientationAngleService,
+    private orientationService: ConvertOrientationService,
     private screenOrientation: ScreenOrientation
   ) { }
 
@@ -24,7 +24,7 @@ export class HomePage implements OnInit {
     this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
 
     this.configureGyroscope();
-    this.orientationAngleService
+    this.orientationService
       .angle.subscribe(angle => this.setAngleByGyro(angle));
   }
 
@@ -39,6 +39,6 @@ export class HomePage implements OnInit {
       frequency: 1000
     };
     this.deviceMotion.watchAcceleration(options)
-      .subscribe(orientation => this.orientationAngleService.convert(orientation));
+      .subscribe(orientation => this.orientationService.convert(orientation));
   }
 }
