@@ -11,6 +11,7 @@ import { DeviceMotion, DeviceMotionAccelerometerOptions } from '@ionic-native/de
 export class HomePage implements OnInit {
 
   angle: number;
+  velocity = 50;
   isGyroControl: boolean;
 
   constructor(

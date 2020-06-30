@@ -10,13 +10,16 @@
   <div class="container">
     <app-btn-toogle
       [(ngModel)]="isGyroControl"
-      [label]="'Habilitar giroscópio'">
+      label="Habilitar giroscópio">
     </app-btn-toogle>
 
     <div class="control">
       <analog-controller [(ngModel)]="angle"></analog-controller>
     </div>
 
-    <app-slider label="Velocidade" ></app-slider>
+    <app-slider
+      [(ngModel)]="velocity"
+      label="Velocidade">
+    </app-slider>
   </div>
 </ion-content>
