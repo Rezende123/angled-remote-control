@@ -8,7 +8,7 @@
     <div class="control">
       <analog-controller
         [(ngModel)]="angle"
-        (ngModelChange)="saveCommand()">
+        (ngModelChange)="reverseVelocityIfNeed(); saveCommand()">
       </analog-controller>
     </div>
 

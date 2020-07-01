@@ -54,6 +54,15 @@ export class HomePage implements OnInit {
     }
   }
 
+  private reverseVelocityIfNeed() {
+    if (
+      this.angle > 180 && this.velocity > 0 ||
+      this.angle <= 180 && this.velocity < 0
+    ) {
+      this.velocity *= -1;
+    }
+  }
+
   private setVelocityByGyro(velocity: number) {
     if (this.isGyroControl) {
       this.velocity = velocity;
