@@ -3,6 +3,8 @@ import { ConvertOrientationService } from './services/convert-orientation.servic
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { DeviceMotion, DeviceMotionAccelerometerOptions } from '@ionic-native/device-motion/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { CommandApiService } from './services/command-api.service';
+import { Command } from './interfaces/Command';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +21,8 @@ export class HomePage implements OnInit {
     private deviceMotion: DeviceMotion,
     private orientationService: ConvertOrientationService,
     private screenOrientation: ScreenOrientation,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private commandApi: CommandApiService
   ) { }
 
   ngOnInit(): void {
@@ -33,6 +36,16 @@ export class HomePage implements OnInit {
 
     this.orientationService
       .velocity.subscribe(velocity => this.setVelocityByGyro(velocity));
+  }
+
+  private saveCommand() {
+    const command = {
+      velocity: this.velocity,
+      angle: this.angle
+    } as Command;
+
+    this.commandApi.save(command)
+      .subscribe(res => console.log(res));
   }
 
   private setAngleByGyro(angle: number) {

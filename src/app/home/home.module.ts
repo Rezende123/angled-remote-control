@@ -10,12 +10,15 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { DeviceMotion } from '@ionic-native/device-motion/ngx';
 import { SliderComponent } from './components/slider/slider.component';
 import { Ng5SliderModule } from 'ng5-slider';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { CommandApiService } from './services/command-api.service';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    HttpClientModule,
     HomePageRoutingModule,
     AnalogControllerModule,
     Ng5SliderModule
@@ -25,6 +28,6 @@ import { Ng5SliderModule } from 'ng5-slider';
     BtnToogleComponent,
     SliderComponent
   ],
-  providers: [DeviceMotion, ScreenOrientation]
+  providers: [DeviceMotion, ScreenOrientation, CommandApiService]
 })
 export class HomePageModule {}

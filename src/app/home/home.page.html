@@ -6,11 +6,15 @@
     </app-btn-toogle>
 
     <div class="control">
-      <analog-controller [(ngModel)]="angle"></analog-controller>
+      <analog-controller
+        [(ngModel)]="angle"
+        (ngModelChange)="saveCommand()">
+      </analog-controller>
     </div>
 
     <app-slider
       [(ngModel)]="velocity"
+      (ngModelChange)="saveCommand()"
       label="Velocidade">
     </app-slider>
   </div>
