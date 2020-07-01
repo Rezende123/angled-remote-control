@@ -38,7 +38,7 @@ export class HomePage implements OnInit {
       .velocity.subscribe(velocity => this.setVelocityByGyro(velocity));
   }
 
-  private saveCommand() {
+  saveCommand() {
     const command = {
       velocity: this.velocity,
       angle: this.angle
@@ -54,7 +54,7 @@ export class HomePage implements OnInit {
     }
   }
 
-  private reverseVelocityIfNeed() {
+  reverseVelocityIfNeed() {
     if (
       this.angle > 180 && this.velocity > 0 ||
       this.angle <= 180 && this.velocity < 0
