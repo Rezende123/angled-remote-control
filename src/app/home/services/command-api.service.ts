@@ -7,14 +7,14 @@ import { Command } from '../interfaces/Command';
 })
 export class CommandApiService {
 
-  baseUrl = 'http://localhost:4200';
+  baseUrl = 'http://192.168.43.235:8080';
 
   constructor(
     private http: HttpClient
   ) { }
 
   save(command: Command) {
-    return this.http.post(`${this.baseUrl}/api/command`, command);
+    return this.http.post(`${this.baseUrl}/command`, command);
   }
 
 }
